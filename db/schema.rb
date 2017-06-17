@@ -10,16 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170614214804) do
+ActiveRecord::Schema.define(version: 20170617195543) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "sitios", force: :cascade do |t|
-    t.string   "nombre"
-    t.json     "valores"
+  create_table "parsers", force: :cascade do |t|
+    t.string "type"
+  end
+
+  create_table "sites", force: :cascade do |t|
+    t.string   "name"
+    t.json     "fields"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "url"
+    t.integer  "parser_id"
   end
 
 end

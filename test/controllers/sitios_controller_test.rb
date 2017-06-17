@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class SitiosControllerTest < ActionDispatch::IntegrationTest
+class SitesControllerTest < ActionDispatch::IntegrationTest
   setup do
     @sitio = sitios(:one)
   end
@@ -16,11 +16,11 @@ class SitiosControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create sitio" do
-    assert_difference('Sitio.count') do
+    assert_difference('Site.count') do
       post sitios_url, params: { sitio: { nombre: @sitio.nombre, valores: @sitio.valores } }
     end
 
-    assert_redirected_to sitio_url(Sitio.last)
+    assert_redirected_to sitio_url(Site.last)
   end
 
   test "should show sitio" do
@@ -39,7 +39,7 @@ class SitiosControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should destroy sitio" do
-    assert_difference('Sitio.count', -1) do
+    assert_difference('Site.count', -1) do
       delete sitio_url(@sitio)
     end
 

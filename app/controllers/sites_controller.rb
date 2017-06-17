@@ -1,10 +1,10 @@
-class SitiosController < ApplicationController
+class SitesController < ApplicationController
   before_action :set_sitio, only: [:show, :edit, :update, :destroy]
 
   # GET /sitios
   # GET /sitios.json
   def index
-    @sitios = Sitio.all
+    @sitios = Site.all
   end
 
   # GET /sitios/1
@@ -14,7 +14,7 @@ class SitiosController < ApplicationController
 
   # GET /sitios/new
   def new
-    @sitio = Sitio.new
+    @sitio = Site.new
   end
 
   # GET /sitios/1/edit
@@ -24,12 +24,12 @@ class SitiosController < ApplicationController
   # POST /sitios
   # POST /sitios.json
   def create
-    @sitio = Sitio.new(sitio_params)
+    @sitio = Site.new(sitio_params)
     @sitio.valores = JSON.parse(sitio_params['valores'])
 
     respond_to do |format|
       if @sitio.save
-        format.html { redirect_to @sitio, notice: 'Sitio was successfully created.' }
+        format.html { redirect_to @sitio, notice: 'Site was successfully created.' }
         format.json { render :show, status: :created, location: @sitio }
       else
         format.html { render :new }
@@ -45,7 +45,7 @@ class SitiosController < ApplicationController
       if @sitio.update(sitio_params)
         @sitio.valores = JSON.parse(sitio_params['valores'])
         @sitio.save
-        format.html { redirect_to @sitio, notice: 'Sitio was successfully updated.' }
+        format.html { redirect_to @sitio, notice: 'Site was successfully updated.' }
         format.json { render :show, status: :ok, location: @sitio }
       else
         format.html { render :edit }
@@ -59,7 +59,7 @@ class SitiosController < ApplicationController
   def destroy
     @sitio.destroy
     respond_to do |format|
-      format.html { redirect_to sitios_url, notice: 'Sitio was successfully destroyed.' }
+      format.html { redirect_to sitios_url, notice: 'Site was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -67,7 +67,7 @@ class SitiosController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_sitio
-      @sitio = Sitio.find(params[:id])
+      @sitio = Site.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
