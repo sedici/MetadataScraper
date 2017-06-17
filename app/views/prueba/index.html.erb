@@ -1,0 +1,11 @@
+<h1>Ingrese su url</h1>
+
+<p>Parser de articulos cientificos</p>
+
+<%= form_tag @index, method: :get do %>
+  <%= label_tag "pagina", "Recolectar informacion:" %>
+  <%= text_field_tag "pagina", "",:required => "required" %>
+  <%= submit_tag "Recolectar" %>
+<% end %>
+
+ # <%= @prueba2.inspect %>

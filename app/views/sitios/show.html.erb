@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @sitio.nombre %>
+</p>
+
+<p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Clave</th>
+        <th>Valor</th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @sitio.valores.each do |valor| %>
+        <tr>
+          <td><%= valor[0] %></td>
+          <td><%= valor[1] %></td>
+
+          <td><%= link_to 'Edit', edit_sitio_path(@sitio) %></td>
+          <td><%= link_to 'Destroy', @sitio, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+</p>
+
+<%= link_to 'Edit', edit_sitio_path(@sitio) %> |
+<%= link_to 'Back', sitios_path %>

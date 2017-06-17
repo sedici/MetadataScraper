@@ -1,0 +1,50 @@
+<%= form_for(sitio) do |f| %>
+  <% if sitio.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(sitio.errors.count, "error") %> prohibited this sitio from being saved:</h2>
+
+      <ul>
+      <% sitio.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= hidden_field_tag('sitio[valores]', value = sitio.valores.to_json) %>
+
+  <div class="field">
+    <%= f.label :nombre %>
+    <%= f.text_field :nombre %>
+  </div>
+
+  <% unless sitio.valores.nil? %>
+    <% sitio.valores.each do |key,value| %>
+      <div class="field">
+        <%= f.label key %><br />
+        <%= text_field_tag(key, value, :class => "tags", 'data-key' => key, 'data-value' => value) %>
+
+      </div>
+    <% end %>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+<script type="text/javascript">
+
+
+  $( "#edit_sitio_<%= sitio.id %>").submit(function( event ) {
+
+    var tags = {}
+    $('.tags').each(function(index,value){
+      tags[$(value).data('key')] = $(value).val()
+    })
+    $('#sitio_valores').val(JSON.stringify(tags))
+
+    event.preventDefault();
+    this.submit()
+
+  });
+</script>
