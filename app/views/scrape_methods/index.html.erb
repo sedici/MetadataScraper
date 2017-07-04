@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<div class="page-header">
+  <%= link_to new_scrape_method_path, class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    New Scrape Method
+  <% end %>
+  <h1>Scrape Methods</h1>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>Method</th>
+        <th>Field</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @scrape_methods) do |scrape_method| %>
+          <td><%= scrape_method.method %></td>
+          <td><%= scrape_method.field.name %></td>
+          <td><%= link_to 'Show', scrape_method %></td>
+          <td><%= link_to 'Edit', edit_scrape_method_path(scrape_method) %></td>
+          <td><%= link_to 'Destroy', scrape_method, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170704203453) do
+ActiveRecord::Schema.define(version: 20170704220857) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,25 +21,12 @@ ActiveRecord::Schema.define(version: 20170704203453) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "parsers", force: :cascade do |t|
-    t.string "type"
-  end
-
   create_table "scrape_methods", force: :cascade do |t|
     t.string   "method"
     t.integer  "field_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["field_id"], name: "index_scrape_methods_on_field_id", using: :btree
-  end
-
-  create_table "sites", force: :cascade do |t|
-    t.string   "name"
-    t.json     "fields"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string   "url"
-    t.integer  "parser_id"
   end
 
 end
