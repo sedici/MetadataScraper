@@ -1,27 +1,26 @@
 <p id="notice"><%= notice %></p>
-
-<h1>Fields</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @fields.each do |field| %>
+<div class="page-header">
+  <%= link_to new_field_path, class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    New Field
+  <% end %>
+  <h1>Field</h1>
+</div>
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
       <tr>
-        <td><%= field.name %></td>
-        <td><%= link_to 'Show', field %></td>
-        <td><%= link_to 'Edit', edit_field_path(field) %></td>
-        <td><%= link_to 'Destroy', field, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Field</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Field', new_field_path %>
+    </thead>
+    <tbody>
+      <%= content_tag_for(:tr, @fields) do |field| %>
+          <td><%= field.name %></td>
+          <td><%= link_to 'Show', field %></td>
+          <td><%= link_to 'Edit', edit_field_path(field) %></td>
+          <td><%= link_to 'Destroy', field, name: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+    </tbody>
+  </table>
+</div>

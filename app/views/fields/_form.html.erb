@@ -1,22 +1,27 @@
-<%= form_for(field) do |f| %>
+<%= form_for(field, html: { class: "form-horizontal", role: "form" }) do |f| %>
   <% if field.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(field.errors.count, "error") %> prohibited this field from being saved:</h2>
+    <div class="alert alert-danger alert-dismissable" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <h4><%= pluralize(field.errors.count, "error") %> prohibited this scrape method from being saved:</h4>
 
       <ul>
-      <% field.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+      <% field.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+  <div class="form-group">
+    <%= f.label :name, class:'col-lg-2 control-label'  %>
+    <div class="col-lg-10">
+     <%= f.text_field :name, class: "form-control", required: true %>
+    </div>
   </div>
 
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <%= f.submit class: "btn btn-primary" %>
+    </div>
   </div>
 <% end %>
