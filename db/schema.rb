@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170704220857) do
+ActiveRecord::Schema.define(version: 20170727235424) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,15 @@ ActiveRecord::Schema.define(version: 20170704220857) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "schema_id"
+    t.index ["schema_id"], name: "index_fields_on_schema_id", using: :btree
+  end
+
+  create_table "schemas", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "identifier"
   end
 
   create_table "scrape_methods", force: :cascade do |t|
@@ -29,4 +38,5 @@ ActiveRecord::Schema.define(version: 20170704220857) do
     t.index ["field_id"], name: "index_scrape_methods_on_field_id", using: :btree
   end
 
+  add_foreign_key "fields", "schemas"
 end
