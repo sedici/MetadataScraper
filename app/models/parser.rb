@@ -9,10 +9,11 @@ class Parser < ActiveRecord::Base
     end
   end
 
-  def self.from_schema(doc,schema)
+  def self.from_schema(doc, schema)
     expored_data = {}
+
     schema.fields.each do |field|
-      scrape_method = field.scrape_methods.second
+      scrape_method = field.scrape_methods.first
       content = []
 
       # selector is a html tag
@@ -22,7 +23,7 @@ class Parser < ActiveRecord::Base
       doc.css(scrape_method.method).each do |tag|
         content << tag['content']
       end
-      expored_data[field.name] = content.join(',') unless content.nil?
+      expored_data[field.name] = content.join(';') unless content.nil?
     end
     expored_data
   end

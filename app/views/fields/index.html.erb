@@ -11,12 +11,16 @@
     <thead>
       <tr>
         <th>Field</th>
+        <th>Schema</th>
+        <th>Scrape Methods</th>
         <th colspan="3"></th>
       </tr>
     </thead>
     <tbody>
       <%= content_tag_for(:tr, @fields) do |field| %>
           <td><%= field.name %></td>
+          <td><%= field.schema ? field.schema.name : '' %></td>
+          <td><%= field.scrape_methods.collect(&:method).join(' | ') %></td>
           <td><%= link_to 'Show', field %></td>
           <td><%= link_to 'Edit', edit_field_path(field) %></td>
           <td><%= link_to 'Destroy', field, name: :delete, data: { confirm: 'Are you sure?' } %></td>

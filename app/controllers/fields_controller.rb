@@ -1,5 +1,6 @@
 class FieldsController < ApplicationController
   before_action :set_field, only: [:show, :edit, :update, :destroy]
+  before_action :set_schemas, only: [:new, :edit]
 
   # GET /fields
   # GET /fields.json
@@ -67,8 +68,12 @@ class FieldsController < ApplicationController
       @field = Field.find(params[:id])
     end
 
+    def set_schemas
+      @schemas = Schema.all.pluck(:name, :id)
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def field_params
-      params.require(:field).permit(:name)
+      params.require(:field).permit(:name, :schema_id)
     end
 end
