@@ -1,7 +1,8 @@
 class Parser < ActiveRecord::Base
   def self.parse(doc)
-    schema = Schema.where(identifier: doc.css("link[rel='schema.DC']")[0]['href']).first
-
+    schema = Schema.all.detect do |schema|
+      schema if doc.to_s.include? schema.identifier
+    end
     if schema.present?
       Parser.from_schema(doc, schema)
     else
@@ -15,6 +16,8 @@ class Parser < ActiveRecord::Base
     schema.fields.each do |field|
       scrape_method = field.scrape_methods.first
       content = []
+
+      next unless scrape_method.method.present?
 
       # selector is a html tag
       data = doc.css(scrape_method.method).text
