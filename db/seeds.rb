@@ -39,7 +39,7 @@ ScrapeMethod.create(method: "meta[name='DCTERMS.issued']", field: schema_field)
 schema = Schema.create!(name: 'Dublin Core', identifier: 'http://purl.org/dc/elements/1.1/')
 
 schema_field = Field.create(name: 'creator', schema: schema)
-ScrapeMethod.create(method: "meta[name='DC.Creator']", field: schema_field)
+ScrapeMethod.create(method: "meta[name='DC.Creator.PersonalName']", field: schema_field)
 
 schema_field = Field.create(name: 'title', schema: schema)
 ScrapeMethod.create(method: "meta[name='DC.Title']", field: schema_field)
@@ -63,10 +63,10 @@ schema_field = Field.create(name: 'journal_title', schema: schema)
 ScrapeMethod.create(method: "meta[name='citation_journal_title']", field: schema_field)
 
 schema_field = Field.create(name: 'volume_and_issue', schema: schema)
-ScrapeMethod.create(method: "meta[name='DCTERMS.isPartOf']", field: schema_field)
+ScrapeMethod.create(method: "meta[name='DC.Source.Volume']", field: schema_field)
 
 schema_field = Field.create(name: 'date_published', schema: schema)
-ScrapeMethod.create(method: "meta[name='DC.Source.Volume']", field: schema_field)
+ScrapeMethod.create(method: "meta[name='citation_issue']", field: schema_field)
 
 schema = Schema.create!(name: 'Elsevier España', identifier: '/css/elsevier.css')
 
@@ -99,3 +99,58 @@ ScrapeMethod.create(method: "#central .pag a", field: schema_field)
 
 schema_field = Field.create(name: 'date_published', schema: schema)
 ScrapeMethod.create(method: ".elsevierItemFechas", field: schema_field)
+
+
+
+schema = Schema.create!(name: 'og', identifier: 'og:url')
+schema_field = Field.create(name: 'creator', schema: schema)
+ScrapeMethod.create(method: "meta[name='dc.creator']", field: schema_field)
+
+schema_field = Field.create(name: 'title', schema: schema)
+ScrapeMethod.create(method: "meta[name='dc.title']", field: schema_field)
+
+schema_field = Field.create(name: 'abstract', schema: schema)
+ScrapeMethod.create(method: "meta[name='dc.description']", field: schema_field)
+
+schema_field = Field.create(name: 'subject', schema: schema)
+ScrapeMethod.create(method: "meta[name='prism.section']", field: schema_field)
+
+schema_field = Field.create(name: 'document_type', schema: schema)
+ScrapeMethod.create(method: "meta[name='dc.type']", field: schema_field)
+
+schema_field = Field.create(name: 'keywords', schema: schema)
+ScrapeMethod.create(method: "meta[name='citation_keywords']", field: schema_field)
+
+schema_field = Field.create(name: 'issn', schema: schema)
+ScrapeMethod.create(method: "meta[name='citation_issn']", field: schema_field)
+
+schema_field = Field.create(name: 'journal_title', schema: schema)
+ScrapeMethod.create(method: "meta[name='citation_journal_title']", field: schema_field)
+
+schema_field = Field.create(name: 'volume_and_issue', schema: schema)
+ScrapeMethod.create(method: "meta[name='citation_volume']", field: schema_field)
+
+schema_field = Field.create(name: 'date_published', schema: schema)
+ScrapeMethod.create(method: "meta[name='dc.date']", field: schema_field)
+
+schema = Schema.create!(name: 'ojs3', identifier: 'gs_meta_revision')
+schema_field = Field.create(name: 'creator', schema: schema)
+ScrapeMethod.create(method: "meta[name='citation_author']", field: schema_field)
+
+schema_field = Field.create(name: 'title', schema: schema)
+ScrapeMethod.create(method: "meta[name='citation_title']", field: schema_field)
+
+schema_field = Field.create(name: 'abstract', schema: schema)
+ScrapeMethod.create(method: "meta[name='dc.description']", field: schema_field)
+
+schema_field = Field.create(name: 'issn', schema: schema)
+ScrapeMethod.create(method: "meta[name='citation_issn']", field: schema_field)
+
+schema_field = Field.create(name: 'journal_title', schema: schema)
+ScrapeMethod.create(method: "meta[name='citation_journal_title']", field: schema_field)
+
+schema_field = Field.create(name: 'volume_and_issue', schema: schema)
+ScrapeMethod.create(method: "meta[name='citation_volume']", field: schema_field)
+
+schema_field = Field.create(name: 'date_published', schema: schema)
+ScrapeMethod.create(method: "meta[name='citation_date']", field: schema_field)
