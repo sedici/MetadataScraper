@@ -33,7 +33,7 @@ schema_field = Field.create(name: 'keywords', schema: schema)
 ScrapeMethod.create(method: "meta[name='citation_keywords']", field: schema_field)
 
 schema_field = Field.create(name: 'identifier_uri', schema: schema)
-ScrapeMethod.create(method: "meta[name='citation_abstract_html_url']", field: schema_field)
+ScrapeMethod.create(method: "meta[name='DC.identifier']", field: schema_field)
 
 schema_field = Field.create(name: 'issn', schema: schema)
 ScrapeMethod.create(method: "meta[name='citation_issn']", field: schema_field)
