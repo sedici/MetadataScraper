@@ -56,6 +56,12 @@ ScrapeMethod.create(method: "meta[name='DC.Creator.PersonalName']", field: schem
 schema_field = Field.create(name: 'title', schema: schema)
 ScrapeMethod.create(method: "meta[name='DC.Title']", field: schema_field)
 
+schema_field = Field.create(name: 'title_subtitle', schema: schema)
+ScrapeMethod.create(method: "meta[name='DC.Subtitle']", field: schema_field)
+
+schema_field = Field.create(name: 'identifier_uri', schema: schema)
+ScrapeMethod.create(method: "meta[name='DC.Identifier.URI']", field: schema_field)
+
 schema_field = Field.create(name: 'abstract', schema: schema)
 ScrapeMethod.create(method: "meta[name='DC.Description']", field: schema_field)
 
