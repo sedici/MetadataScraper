@@ -11,6 +11,15 @@ ScrapeMethod.create(method: "meta[name='DC.creator']", field: schema_field)
 schema_field = Field.create(name: 'title', schema: schema)
 ScrapeMethod.create(method: "meta[name='DC.title']", field: schema_field)
 
+schema_field = Field.create(name: 'title_subtitle', schema: schema)
+ScrapeMethod.create(method: "meta[name='DCTERMS.alternative']", field: schema_field)
+
+schema_field = Field.create(name: 'location', schema: schema)
+ScrapeMethod.create(method: "meta[name='DCTERMS.spatial']", field: schema_field)
+
+schema_field = Field.create(name: 'extent', schema: schema)
+ScrapeMethod.create(method: "meta[name='DCTERMS.extent']", field: schema_field)
+
 schema_field = Field.create(name: 'abstract', schema: schema)
 ScrapeMethod.create(method: "meta[name='DCTERMS.abstract']", field: schema_field)
 
@@ -22,6 +31,9 @@ ScrapeMethod.create(method: "meta[name='DC.type']", field: schema_field)
 
 schema_field = Field.create(name: 'keywords', schema: schema)
 ScrapeMethod.create(method: "meta[name='citation_keywords']", field: schema_field)
+
+schema_field = Field.create(name: 'identifier_uri', schema: schema)
+ScrapeMethod.create(method: "meta[name='citation_abstract_html_url']", field: schema_field)
 
 schema_field = Field.create(name: 'issn', schema: schema)
 ScrapeMethod.create(method: "meta[name='citation_issn']", field: schema_field)
