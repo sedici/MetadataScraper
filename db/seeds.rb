@@ -110,10 +110,10 @@ schema_field = Field.create(name: 'issn', schema: schema)
 ScrapeMethod.create(method: "meta[name='citation_issn']", field: schema_field)
 
 schema_field = Field.create(name: 'journal_title', schema: schema)
-ScrapeMethod.create(method: "meta[name='citation_journal_title']", field: schema_field)
+ScrapeMethod.create(method: ".tituloRevista caja", field: schema_field)
 
 schema_field = Field.create(name: 'volume_and_issue', schema: schema)
-ScrapeMethod.create(method: "#central .pag a", field: schema_field)
+ScrapeMethod.create(method: ".pag a", field: schema_field)
 
 schema_field = Field.create(name: 'date_published', schema: schema)
 ScrapeMethod.create(method: ".elsevierItemFechas", field: schema_field)
@@ -172,3 +172,36 @@ ScrapeMethod.create(method: "meta[name='citation_volume']", field: schema_field)
 
 schema_field = Field.create(name: 'date_published', schema: schema)
 ScrapeMethod.create(method: "meta[name='citation_date']", field: schema_field)
+
+schema = Schema.create!(name: 'Springer', identifier: '/springerlink-static/658791758/images/favicon/favicon.ico')
+
+schema_field = Field.create(name: 'creator', schema: schema)
+ScrapeMethod.create(method: ".authors__name", field: schema_field)
+
+schema_field = Field.create(name: 'title', schema: schema)
+ScrapeMethod.create(method: ".ArticleTitle", field: schema_field)
+
+schema_field = Field.create(name: 'abstract', schema: schema)
+ScrapeMethod.create(method: ".Abstract", field: schema_field)
+
+schema_field = Field.create(name: 'keywords', schema: schema)
+ScrapeMethod.create(method: ".Keyword", field: schema_field)
+
+schema_field = Field.create(name: 'issn', schema: schema)
+ScrapeMethod.create(method: "meta[name='citation_issn']", field: schema_field)
+
+schema_field = Field.create(name: 'journal_title', schema: schema)
+ScrapeMethod.create(method: ".JournalTitle", field: schema_field)
+
+schema_field = Field.create(name: 'volume_and_issue', schema: schema)
+ScrapeMethod.create(method: ".ArticleCitation_Volume", field: schema_field)
+
+schema_field = Field.create(name: 'date_published', schema: schema)
+ScrapeMethod.create(method: ".ArticleCitation_Year", field: schema_field)
+
+schema_field = Field.create(name: 'extent', schema: schema)
+ScrapeMethod.create(method: ".ArticleCitation_Pages", field: schema_field)
+
+schema_field = Field.create(name: 'contact', schema: schema)
+ScrapeMethod.create(method: ".authors__contact", field: schema_field)
+
