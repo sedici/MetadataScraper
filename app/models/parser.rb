@@ -20,7 +20,7 @@ class Parser < ActiveRecord::Base
       next unless scrape_method.method.present?
 
       # selector is a html tag
-      data = doc.css(scrape_method.method).text
+      data = doc.css(scrape_method.method).text.strip
       content << data unless data.empty?
       # selector is a meta tag
       doc.css(scrape_method.method).each do |tag|

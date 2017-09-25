@@ -120,13 +120,13 @@ ScrapeMethod.create(method: ".elsevierItemFechas", field: schema_field)
 
 schema = Schema.create!(name: 'ojs3', identifier: 'gs_meta_revision')
 schema_field = Field.create(name: 'creator', schema: schema)
-ScrapeMethod.create(method: "meta[name='citation_author']", field: schema_field)
+ScrapeMethod.create(method: ".authors li span[class='name']", field: schema_field)
 
 schema_field = Field.create(name: 'title', schema: schema)
-ScrapeMethod.create(method: "meta[name='citation_title']", field: schema_field)
+ScrapeMethod.create(method: ".page_title", field: schema_field)
 
 schema_field = Field.create(name: 'abstract', schema: schema)
-ScrapeMethod.create(method: "meta[name='dc.description']", field: schema_field)
+ScrapeMethod.create(method: ".abstract p", field: schema_field)
 
 schema_field = Field.create(name: 'issn', schema: schema)
 ScrapeMethod.create(method: "meta[name='citation_issn']", field: schema_field)
@@ -134,11 +134,21 @@ ScrapeMethod.create(method: "meta[name='citation_issn']", field: schema_field)
 schema_field = Field.create(name: 'journal_title', schema: schema)
 ScrapeMethod.create(method: "meta[name='citation_journal_title']", field: schema_field)
 
-schema_field = Field.create(name: 'volume_and_issue', schema: schema)
-ScrapeMethod.create(method: "meta[name='citation_volume']", field: schema_field)
-
 schema_field = Field.create(name: 'date_published', schema: schema)
-ScrapeMethod.create(method: "meta[name='citation_date']", field: schema_field)
+ScrapeMethod.create(method: ".published div[class='value']", field: schema_field)
+
+schema_field = Field.create(name: 'location', schema: schema)
+ScrapeMethod.create(method: ".pdf @href", field: schema_field)
+
+schema_field = Field.create(name: 'type', schema: schema)
+ScrapeMethod.create(method: ".issue div[2] div[class='value']", field: schema_field)
+
+schema_field = Field.create(name: 'volume_and_issue', schema: schema)
+ScrapeMethod.create(method: ".issue div[1] div[class='value']", field: schema_field)
+
+schema_field = Field.create(name: 'doi', schema: schema)
+ScrapeMethod.create(method: ".doi span[class='value'] a", field: schema_field)
+
 
 #Springer Nature
 schema = Schema.create!(name: 'Springer', identifier: '/springerlink-static/658791758/images/favicon/favicon.ico')
