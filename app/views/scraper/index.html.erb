@@ -1,10 +1,19 @@
-<h1>Ingrese su url</h1>
+<div class="container">
+	<div class="row">
+		<div class="col-md-6">
+			<h1>Ingrese su url</h1>
 
-<p>Parser de articulos cientificos</p>
+			<p>Parser de articulos cientificos</p>
 
-<%= form_tag @index, method: :get do %>
-  <%= label_tag "pagina", "Recolectar informacion:" %>
-  <%= text_field_tag "pagina", "",:required => "required" %>
-  <%= submit_tag "Recolectar" %>
-<% end %>
+			<%= form_tag @index, method: :get do %>
+			  <%= label_tag "pagina", "Recolectar informacion:" %>
+			  <%= text_field_tag "pagina", "",:required => "required" %>
+			  <%= submit_tag "Recolectar" %>
+			<% end %>
+		</div>
+		<div class="col-md-6">
+			<%= image_tag('logosedici.png') %>
+		</div>
+	</div>
+</div>
 

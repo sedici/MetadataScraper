@@ -1,7 +1,7 @@
 class ScrapeMethodsController < ApplicationController
   before_action :set_scrape_method, only: [:show, :edit, :update, :destroy]
   before_action :set_fields, only: [:new, :edit]
-
+  before_action :authenticate_user!, only: [:new, :edit, :destroy]
   # GET /scrape_methods
   # GET /scrape_methods.json
   def index
@@ -82,4 +82,5 @@ class ScrapeMethodsController < ApplicationController
     def scrape_method_params
       params.require(:scrape_method).permit(:method, :field_id)
     end
+
 end

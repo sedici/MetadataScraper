@@ -1,8 +1,10 @@
 <p id="notice"><%= notice %></p>
 <div class="page-header">
-  <%= link_to new_field_path, class: 'btn btn-primary' do %>
-    <span class="glyphicon glyphicon-plus"></span>
-    New Field
+  <% if can? :create, @field %>
+    <%= link_to new_field_path, class: 'btn btn-primary' do %>
+      <span class="glyphicon glyphicon-plus"></span>
+      New Field
+    <% end %>
   <% end %>
   <h1>Field</h1>
 </div>

@@ -1,6 +1,7 @@
 class FieldsController < ApplicationController
   before_action :set_field, only: [:show, :edit, :update, :destroy]
   before_action :set_schemas, only: [:new, :edit]
+  before_action :authenticate_user!, only: [:new, :edit, :destroy]
 
   # GET /fields
   # GET /fields.json
